@@ -1,7 +1,16 @@
 # All-Optical Field-Resolved Spectroscopy With Interferometric Nonlinear Cross-Correlations
 
-This repository provides the analysis scripts and measured data needed to reproduce
-the results presented in the manuscript below.
+Felix Ritzkowsky<sup>1,2,\*</sup>, Gian Luca Dolso<sup>1</sup>, Benjamin M. Mazur<sup>1</sup>, Matthew Yeung<sup>1</sup>, and Phillip D. Keathley<sup>1,\*</sup>
+
+<sup>1</sup> Massachusetts Institute of Technology, 77 Massachusetts Avenue, Cambridge MA 02139, USA
+<sup>2</sup> Deutsches Elektronen-Synchrotron (DESY) and Center for Free-Electron Laser Science (CFEL), Notkestraße 85, 22607 Hamburg, Germany
+
+<sup>\*</sup> Corresponding authors. pdkeat2@mit.edu, felix.ritzkowsky@desy.de
+
+Preprint: [arXiv:2608.04493](https://arxiv.org/abs/2608.04493)
+
+This repository provides the analysis scripts and measured data needed to
+reproduce the results presented in the manuscript.
 
 ## Contents
 
@@ -75,7 +84,12 @@ resolution, 10 averages).
 HITRAN α is computed for **pure H₂O** at the stated pressure — HAPI scales the line
 strengths by the total number density — so the laboratory absorption is `x_H2O · α`.
 The FID notebook absorbs the mixing ratio into the path length,
-`L_eff = x_H2O · L_geo`; see the notebook for the derivation.
+`L_eff = x_H2O · L_geo`; see the notebook for the derivation. The line data was
+processed with HAPI:
+
+> R. V. Kochanov, I. E. Gordon, L. S. Rothman, P. Wcisło, C. Hill, J. S. Wilzewski,
+> *HITRAN Application Programming Interface (HAPI): A comprehensive approach to
+> working with spectroscopic data*, JQSRT **177**, 15–30 (2016).
 
 Alongside the HDF5 file:
 
@@ -92,23 +106,6 @@ import h5py
 with h5py.File('data/field_retrieval_data.h5') as f:
     f.visititems(lambda name, obj: print(name, getattr(obj, 'shape', '')))
 ```
-
-## Manuscript
-
-**All-Optical Field-Resolved Spectroscopy With Interferometric Nonlinear Cross-Correlations**
-
-Felix Ritzkowsky<sup>1,2,\*</sup>, Gian Luca Dolso<sup>1</sup>, Benjamin M. Mazur<sup>1</sup>, Matthew Yeung<sup>1</sup>, and Phillip D. Keathley<sup>1,\*</sup>
-
-<sup>1</sup> Massachusetts Institute of Technology, 77 Massachusetts Avenue, Cambridge MA 02139, USA
-<sup>2</sup> Deutsches Elektronen-Synchrotron (DESY) and Center for Free-Electron Laser Science (CFEL), Notkestraße 85, 22607 Hamburg, Germany
-
-<sup>\*</sup> Corresponding authors. pdkeat2@mit.edu, felix.ritzkowsky@desy.de
-
-The HITRAN absorption data was computed with HAPI:
-
-> R. V. Kochanov, I. E. Gordon, L. S. Rothman, P. Wcisło, C. Hill, J. S. Wilzewski,
-> *HITRAN Application Programming Interface (HAPI): A comprehensive approach to
-> working with spectroscopic data*, JQSRT **177**, 15–30 (2016).
 
 ## Acknowledgement
 
